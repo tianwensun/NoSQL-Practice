@@ -61,6 +61,7 @@ public class FormHandle extends HttpServlet {
 				Float cpi = ret.get("CPI");
 		        Float pmi = ret.get("PMI");
 		        Float 失业率 = ret.get("失业率");
+		        Float 失业环比变化 = ret.get("失业环比变化");
 		        
 		        JsonObject jsonOut = Json.createObjectBuilder()
 		        		.add("error", "0")
@@ -68,7 +69,8 @@ public class FormHandle extends HttpServlet {
 		        	    .add("data", Json.createObjectBuilder()
 				        		.add("cpi", String.valueOf(cpi))
 				        	    .add("pmi", String.valueOf(pmi))
-				        	    .add("失业率", String.valueOf(失业率)))
+				        	    .add("失业率", String.valueOf(失业率))
+				        	    .add("失业环比变化", String.valueOf(失业环比变化)))
 		        	    .build();
 		    	out.print(jsonOut.toString());
 	    	}
@@ -223,37 +225,4 @@ public class FormHandle extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-	
-	/*public void service(HttpServletRequest req, HttpServletResponse res) throws IOException{
-	    res.setContentType("text/html");
-	    
-	    PrintWriter out = res.getWriter();
-	    
-	    Enumeration flds = req.getParameterNames();
-	    
-	    if(!flds.hasMoreElements()){
-	        
-	        out.print("<html>");
-	        out.print("<form method=\"POST\"" +"action=\"FormHandle\">");
-	        for(int i = 0; i < 10; i++)
-	            out.print("<b>Field" + i + "</b> " +
-	                    "<input type=\"text\""+" size=\"20\" name=\"Field"
-	                    + i + "\" value=\"Value" + i + "\"><br>");
-	        out.print("<INPUT TYPE=submit name=submit Value=\"Submit\"></form></html>");
-	    
-	    }else{
-	        
-	        out.print("<h1>Your form contained:</h1>");
-	        
-	        while(flds.hasMoreElements()){
-	            String field= (String)flds.nextElement();
-	            String value= req.getParameter(field);
-	            out.print(field + " = " + value+ "<br>");
-	        }
-	    }
-	    
-	    out.close();
-	    
-	}*/
-
 }

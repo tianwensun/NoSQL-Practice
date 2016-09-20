@@ -101,8 +101,23 @@ $("#btn1").click(function(){
     		    } else {
     		    	result = result + "正常";
     		    }
-    			result = result + "</font>。";
+    			result = result + "</font>，环比";
     			
+    	        if(req.data.失业环比变化 == 0){
+    	        	result = result + "<font color='red'>无变化</font>。";
+    	        }else{
+    		        if(req.data.失业环比变化>0){
+    		        	result = result + "<font color='red'>上涨"+ (Math.round(req.data.失业环比变化*100)/100)+"%</font>,";
+    		        }else{
+    		        	result = result + "<font color='red'>下降"+ (Math.round(Math.abs(req.data.失业环比变化)*100)/100) +"%</font>,";
+    		        }
+    		        if(Math.abs(req.data.失业环比变化) > 2){
+    		        	result = result + "变化<font color='red'>较快</font>";
+    		        }else{
+    		        	result = result + "变化<font color='red'>缓慢</font>";
+    		        }
+    		        result = result +"。";
+    	        }
     	    	$("#economicSituation").html(result);
     		}
     	});
