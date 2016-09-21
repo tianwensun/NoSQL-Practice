@@ -69,7 +69,7 @@ public class NoSQL {
 			else if("-h".equals(args[i]))
 			{
 				System.out.println("NoSQL作业程序1.0版本");
-				System.out.println("-a\t行为，支持以下三种：");
+				System.out.println("-a\t行为，支持以下8种：");
 				System.out.println("\tImportDataToMongodb 导入数据到MongoDB");
 				System.out.println("\tImportWeiboDataToRedis 导入微博数据到Redis");
 				System.out.println("\tEconomicSituation 显示指定日期的经济情况");
